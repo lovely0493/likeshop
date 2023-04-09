@@ -3,3 +3,10 @@
 2.开发部署文档：http://doc.likeshop.cn
 
 3.如果在部署使用遇到错误，优先看常见错误排查文档：https://www.likeshop.cn/doc/13/65
+
+docker部署
+
+1.修改ng里的域名
+2.修改yaml文件里的user权限
+3.执行命令docker-compose -p likeshop up -d
+4.访问域名根据提示完成
