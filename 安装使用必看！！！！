@@ -10,3 +10,5 @@ docker部署
 2.修改yaml文件里的user权限
 3.执行命令docker-compose -p likeshop up -d
 4.访问域名根据提示完成
+加域名重启ng
+docker exec -it likeshop-nginx nginx -s reload
