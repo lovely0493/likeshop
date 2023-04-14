@@ -159,6 +159,35 @@ class LoginLogic extends LogicBase
     }
 
     /**
+     * 获取当前小程序的access_token
+     * @return array
+     * @throws \Psr\SimpleCache\InvalidArgumentException
+     * @throws \think\Exception
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\ModelNotFoundException
+     * @throws \think\exception\DbException
+     * @throws \think\exception\PDOException
+     */
+    public static function getAccessToken()
+    {
+        //微信调用
+        try {
+            $config = WeChatServer::getMnpConfig();
+            $app = Factory::miniProgram($config);
+            $token = $app->access_token->getToken();
+            if (!isset($token) || empty($token)) {
+                throw new Exception('获取token失败');
+            }
+        } catch (Exception $e) {
+            return self::dataError('获取失败:' . $e->getMessage());
+        }catch (\think\Exception $e){
+            return self::dataError('获取失败:' . $e->getMessage());
+        }
+
+        return $token;
+    }
+
+    /**
      * 获取code的url
      * @param $url
      * @return string
