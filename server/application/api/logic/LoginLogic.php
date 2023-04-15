@@ -184,7 +184,7 @@ class LoginLogic extends LogicBase
             return self::dataError('获取失败:' . $e->getMessage());
         }
 
-        return $token;
+        return self::dataSuccess('获取成功', $token);
     }
 
     /**

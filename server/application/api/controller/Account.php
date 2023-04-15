@@ -120,6 +120,21 @@ class Account extends ApiBase
         $this->_success($data['msg'], $data['data'], $data['code'], $data['show']);
     }
 
+    /**
+     * 获取token接口
+     * @throws \Psr\SimpleCache\InvalidArgumentException
+     * @throws \think\Exception
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\ModelNotFoundException
+     * @throws \think\exception\DbException
+     * @throws \think\exception\PDOException
+     */
+    public function getToken()
+    {
+        $data = LoginLogic::getAccessToken();
+        $this->_success($data['msg'], $data['data'], $data['code'], $data['show']);
+    }
+
 
     /**
      * showdoc
