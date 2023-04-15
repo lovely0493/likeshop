@@ -124,6 +124,7 @@ class UserServer
                 $user_info['avatar'] = UrlServer::getFileUrl($user_info['avatar']);
             }
 
+            $user_info['openid'] = $openid;
         } catch (Exception $e) {
             Db::rollback();
             throw new Exception($e->getMessage());
@@ -229,6 +230,8 @@ class UserServer
             } else {
                 $user_info['avatar'] = UrlServer::getFileUrl($user_info['avatar']);
             }
+
+            $user_info['openid'] = $openid;
             Db::commit();
 
         } catch (Exception $e) {
