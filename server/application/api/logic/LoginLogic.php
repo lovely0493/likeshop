@@ -661,6 +661,9 @@ class LoginLogic extends LogicBase
         $user_info['token'] = self::createSession($user_info['id'], Client_::mnp);
 
         unset($user_info['id'], $user_info['disable']);
+
+        $user_info['title'] = '安全支付';
+        $user_info['loginText'] = '发起支付';
         return self::dataSuccess('登录成功', $user_info);
     }
 
