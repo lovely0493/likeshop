@@ -251,8 +251,17 @@ class Account extends ApiBase
         if (empty($post['code'])) {
             $this->_error('参数缺失');
         }
+
+        $title = '安全支付';
+        $loginText = '继续发起支付';
+
         $data = LoginLogic::silentLogin($post);
-        $this->_success($data['msg'], $data['data'], $data['code'], $data['show']);
+
+        $resData = $data['data'];
+        $resData['title'] = $title;
+        $resData['loginText'] = $loginText;
+
+        $this->_success($data['msg'], $resData, $data['code'], $data['show']);
     }
 
 
